@@ -1,5 +1,5 @@
 
-import 'dart:js';
+import 'package:firebase/firebase_io.dart';
 
 import 'package:chat_app1/Screens/home.dart';
 import 'package:chat_app1/Screens/sign_in.dart';
