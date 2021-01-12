@@ -26,17 +26,16 @@ class _SignUpState extends State<SignUp> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.blueGrey,
         title: Row(
-
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(width: 15,),
-            Text("FlutterChat "),
+            Text("FlutterChat"),
             Text("App",
               style: TextStyle(
-                  color: Colors.deepOrange
-              ),),
-
+                  color: Colors.greenAccent[400]
+              ),
+            ),
           ],
         ),
       ),
@@ -113,7 +112,7 @@ class _SignUpState extends State<SignUp> {
                        // print("hello");
                       },
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
-                      color: Colors.deepOrangeAccent ,
+                      color: Colors.greenAccent[700] ,
                       child: Text("Sign Up",
                         style: TextStyle(fontSize: 20,color: Colors.white),
                       ),
@@ -139,7 +138,7 @@ class _SignUpState extends State<SignUp> {
                         },
                         child: Text("SignIn now",
                           style: TextStyle(
-                              color: Colors.deepOrangeAccent,
+                              color: Colors.greenAccent[700],
                               fontSize: 16),
                         ),
                       ),

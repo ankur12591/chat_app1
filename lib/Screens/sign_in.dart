@@ -1,4 +1,6 @@
 import 'package:chat_app1/Screens/sign_up.dart';
+import 'package:chat_app1/Services/auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SignIn extends StatefulWidget {
@@ -16,7 +18,9 @@ class _SignInState extends State<SignIn> {
 
   bool showPass = false;
 
-
+  onSignInBtnClick (BuildContext context){
+    AuthMethods().signInWithEmailAndPassword(emailTextEditingController.text,  passwordTextEditingController.text, context);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,17 +28,16 @@ class _SignInState extends State<SignIn> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.blueGrey,
         title: Row(
-
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(width: 15,),
-            Text("FlutterChat "),
+            Text("FlutterChat"),
             Text("App",
               style: TextStyle(
-                  color: Colors.deepOrange
-              ),),
-
+                  color: Colors.greenAccent[400]
+              ),
+            ),
           ],
         ),
       ),
@@ -105,9 +108,11 @@ class _SignInState extends State<SignIn> {
                     height: 40,
                     child: RaisedButton(
 
-                      onPressed: () {},
+                      onPressed: () {
+                        onSignInBtnClick(context);
+                      },
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
-                      color: Colors.deepOrangeAccent ,
+                      color: Colors.greenAccent[700] ,
                       child: Text("Sign In",
                         style: TextStyle(fontSize: 20,color: Colors.white),
                       ),
@@ -133,12 +138,10 @@ class _SignInState extends State<SignIn> {
                         },
                         child: Text("Register now",
                           style: TextStyle(
-                              color: Colors.deepOrangeAccent,
+                              color: Colors.greenAccent[700],
                               fontSize: 16),
                         ),
                       ),
-
-
                     ],
                   ),
                 ],

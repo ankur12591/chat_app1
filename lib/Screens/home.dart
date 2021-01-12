@@ -13,20 +13,20 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-        backgroundColor: Colors.white,
-          title: Row(
+      appBar: AppBar(
+        backgroundColor: Colors.blueGrey,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(width: 15,),
-            Text("FlutterChat "),
+            Text("FlutterChat"),
             Text("App",
               style: TextStyle(
-                color: Colors.deepOrange
+                  color: Colors.greenAccent[400]
               ),
             ),
           ],
-          ),
         ),
+      ),
     );
           }
 }

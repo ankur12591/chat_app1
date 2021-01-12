@@ -8,6 +8,21 @@ class ChatScreen extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.blueGrey,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("FlutterChat"),
+            Text("App",
+              style: TextStyle(
+                  color: Colors.greenAccent[400]
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

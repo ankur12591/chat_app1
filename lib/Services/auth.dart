@@ -20,7 +20,7 @@ class AuthMethods{
 
   // Sign In
 
-  signWithEmailAndPassword (String email, String password, BuildContext context) async {
+  signInWithEmailAndPassword (String email, String password, BuildContext context) async {
     UserCredential userCredential = await
     _auth.signInWithEmailAndPassword(
         email: email, password: password);
