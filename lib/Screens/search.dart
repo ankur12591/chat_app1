@@ -95,6 +95,12 @@ class SearchTile extends StatelessWidget {
 
   Future<String> getChatRoomId(String searchUsername) async {
     String myUsername = await SharedPreferenceHelper().getUserName();
+    if (myUsername.substring(0).codeUnitAt(0) >
+        searchUsername.substring(0).codeUnitAt(0)) {
+      return "${searchUsername}_$myUsername";
+    } else {
+      return "${myUsername}_$searchUsername";
+    }
 
   }
 

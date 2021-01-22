@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Chat App',
-      //theme: ThemeData.dark(),
+      theme: ThemeData.dark(),
       home:  FutureBuilder(
         future: AuthMethods().getCurrentUser(),
         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot)  {
