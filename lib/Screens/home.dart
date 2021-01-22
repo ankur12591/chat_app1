@@ -1,4 +1,6 @@
 
+import 'package:chat_app1/Screens/search.dart';
+import 'package:chat_app1/Services/auth.dart';
 import 'package:flutter/material.dart';
 
 
@@ -26,7 +28,30 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ],
         ),
+        elevation: 0.0,
+        actions: [
+          GestureDetector(
+            onTap: (){
+              AuthMethods().signOut(context);
+            },
+
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Icon(Icons.exit_to_app_rounded),
+            ),
+          ),
+        ],
+      ),
+
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.search_rounded),
+        onPressed: (){
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) =>
+              Search())
+          );
+        },
       ),
     );
-          }
+  }
 }

@@ -16,9 +16,18 @@ class _SignUpState extends State<SignUp> {
   TextEditingController passwordTextEditingController = TextEditingController();
 
   bool showPass = false;
+  bool _isLoading = false;
 
   onSignUpBtnClick (BuildContext context){
-    AuthMethods().signUpWithEmailAndPassword(emailTextEditingController.text,  passwordTextEditingController.text, context);
+    setState(() {
+      _isLoading = true;
+    });
+    AuthMethods()
+        .signUpWithEmailAndPassword(
+        userNameTextEditingController.text,
+        emailTextEditingController.text,
+        passwordTextEditingController.text,
+        context);
 }
 
 
@@ -40,117 +49,123 @@ class _SignUpState extends State<SignUp> {
         ),
       ),
 
-      body: SingleChildScrollView(
-        child: Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height-80,
-          color: Colors.black12,
-          child: Center(
+      body: _isLoading
+          ? Center(
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 40),
+                child: CircularProgressIndicator(),),
+          )
+          : SingleChildScrollView(
+              child: Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height-80,
+              color: Colors.black12,
+              child: Center(
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 40),
 
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-
-                  TextField(
-                    controller: userNameTextEditingController,
-                    decoration: InputDecoration(
-                      hintText: "User Name",
-                    ),
-                    style: TextStyle(
-                      fontSize: 17,
-                    ),
-                  ),
-
-                  SizedBox(height: 10,),
-
-                  TextField(
-                    controller: emailTextEditingController,
-                    decoration: InputDecoration(
-                        hintText: "Email"
-
-                    ),
-                    style: TextStyle(
-                      fontSize: 17,
-                    ),
-                  ),
-
-                  SizedBox(height: 10,),
-
-                  TextField(
-                    obscureText: showPass,
-                    controller: passwordTextEditingController,
-                    decoration: InputDecoration(
-                        hintText: "Password"
-
-
-                    ),
-                    style: TextStyle(
-                      fontSize: 17,
-                    ),
-                  ),
-
-                  SizedBox(height: 20,),
-
-                  Row(
+                  child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text("forgot password?"),
-                    ],
-                  ),
 
-                  SizedBox(height: 20,),
-
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: 40,
-                    child: RaisedButton(
-
-                      onPressed: () {
-                        onSignUpBtnClick(context);
-                       // print("hello");
-                      },
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
-                      color: Colors.greenAccent[700] ,
-                      child: Text("Sign Up",
-                        style: TextStyle(fontSize: 20,color: Colors.white),
-                      ),
-                    ),
-                  ),
-
-                  SizedBox(height: 20,),
-
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text("Already have account?",
+                      TextField(
+                        controller: userNameTextEditingController,
+                        decoration: InputDecoration(
+                          hintText: "User Name",
+                        ),
                         style: TextStyle(
-                          fontSize: 16,
+                          fontSize: 17,
                         ),
                       ),
 
-                      SizedBox(width: 8,),
+                      SizedBox(height: 10,),
 
-                      InkWell(
-                        onTap: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => SignIn()));
-                        },
-                        child: Text("SignIn now",
-                          style: TextStyle(
-                              color: Colors.greenAccent[700],
-                              fontSize: 16),
+                      TextField(
+                        controller: emailTextEditingController,
+                        decoration: InputDecoration(
+                            hintText: "Email"
+
+                        ),
+                        style: TextStyle(
+                          fontSize: 17,
                         ),
                       ),
 
+                      SizedBox(height: 10,),
 
+                      TextField(
+                        obscureText: true,
+                        controller: passwordTextEditingController,
+                        decoration: InputDecoration(
+                            hintText: "Password"
+
+
+                        ),
+                        style: TextStyle(
+                          fontSize: 17,
+                        ),
+                      ),
+
+                      SizedBox(height: 20,),
+
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text("forgot password?"),
+                        ],
+                      ),
+
+                      SizedBox(height: 20,),
+
+                      Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: 40,
+                        child: RaisedButton(
+
+                          onPressed: () {
+                            onSignUpBtnClick(context);
+                           // print("hello");
+                          },
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
+                          color: Colors.greenAccent[700] ,
+                          child: Text("Sign Up",
+                            style: TextStyle(fontSize: 20,color: Colors.white),
+                          ),
+                        ),
+                      ),
+
+                      SizedBox(height: 20,),
+
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("Already have account?",
+                            style: TextStyle(
+                              fontSize: 16,
+                            ),
+                          ),
+
+                          SizedBox(width: 8,),
+
+                          InkWell(
+                            onTap: () {
+                              Navigator.pushReplacement(context,
+                                  MaterialPageRoute(builder: (context) => SignIn()));
+                            },
+                            child: Text("SignIn now",
+                              style: TextStyle(
+                                  color: Colors.greenAccent[700],
+                                  fontSize: 16),
+                            ),
+                          ),
+
+
+                        ],
+                      ),
                     ],
                   ),
-                ],
+                ),
               ),
             ),
-          ),
-        ),
       ),
 
     );

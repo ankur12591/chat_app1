@@ -16,10 +16,13 @@ class _SignInState extends State<SignIn> {
 
   TextEditingController passwordTextEditingController = TextEditingController();
 
-  bool showPass = false;
+  bool showPass = true;
 
   onSignInBtnClick (BuildContext context){
-    AuthMethods().signInWithEmailAndPassword(emailTextEditingController.text,  passwordTextEditingController.text, context);
+    AuthMethods().signInWithEmailAndPassword(
+        userNameTextEditingController.text,
+        emailTextEditingController.text,
+        passwordTextEditingController.text, context);
   }
 
   @override
@@ -80,7 +83,7 @@ class _SignInState extends State<SignIn> {
                   SizedBox(height: 10,),
 
                   TextField(
-                    obscureText: showPass,
+                    obscureText: true,
                     controller: passwordTextEditingController,
                     decoration: InputDecoration(
                         hintText: "Password"
@@ -134,7 +137,7 @@ class _SignInState extends State<SignIn> {
 
                       InkWell(
                         onTap: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => SignUp()));
+                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => SignUp()));
                         },
                         child: Text("Register now",
                           style: TextStyle(
